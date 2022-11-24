@@ -31,6 +31,7 @@ class ClassicBlocks extends Module
         return parent::install() &&
         // $this->registerHook('ActionRegisterThemeSettings') &&
         $this->registerHook('ActionRegisterBlock') &&
+        $this->registerHook('displayHeader') &&
         // $this->registerHook('ActionQueueSassCompile') &&
         $this->registerHook('beforeRenderingClassicFeaturedProduct');
     }
@@ -40,10 +41,17 @@ class ClassicBlocks extends Module
         return parent::uninstall() &&
         // $this->unregisterHook('ActionRegisterThemeSettings') &&
         $this->unregisterHook('ActionRegisterBlock') &&
+        $this->unregisterHook('displayHeader') &&
         // $this->unregisterHook('ActionQueueSassCompile') &&
         $this->unregisterHook('beforeRenderingClassicFeaturedProduct');
     }
 
+    public function hookdisplayHeader($params)
+    {
+        $this->context->controller->registerStylesheet('modules-homeslider', 'modules/' . $this->name . '/css/homeslider.css', ['media' => 'all', 'priority' => 150]);
+        $this->context->controller->registerJavascript('modules-responsiveslides', 'modules/' . $this->name . '/js/responsiveslides.min.js', ['position' => 'bottom', 'priority' => 150]);
+        $this->context->controller->registerJavascript('modules-homeslider', 'modules/' . $this->name . '/js/homeslider.js', ['position' => 'bottom', 'priority' => 150]);
+    }
 
     public function hookActionRegisterThemeSettings()
     {
@@ -55,7 +63,7 @@ class ClassicBlocks extends Module
     {
         $blocks = [];
         
-        // render module
+        // featured products
         $blocks[] =  [
             'name' => $this->l('Featured products blocks'),
             'description' => $this->l('Render featured block'),
@@ -87,6 +95,76 @@ class ClassicBlocks extends Module
                     ]
                 ],
             ],
+        ];
+
+        // slider
+        $blocks[] =  [
+            'name' => $this->l('Classic slide'),
+            'description' => $this->l('Display slides where you want'),
+            'code' => 'classic_slides',
+            'tab' => 'general',
+            'icon' => 'RectangleStackIcon',
+            'need_reload' => true,
+            'templates' => [
+                'default' => 'module:'.$this->name.'/views/templates/blocks/slides.tpl'
+            ],
+            'config' => [
+                'fields' => [
+                    'speed' => [
+                        'type' => 'text',
+                        'label' => 'Slide speed',
+                        'default' => '5000'
+                    ],
+                    'pause' => [
+                        'type' => 'checkbox',
+                        'label' => 'Pause on hover',
+                        'default' => true,
+                    ],
+                    'wrap' => [
+                        'type' => 'checkbox',
+                        'label' => 'Repeat images',
+                        'default' => true,
+                    ],
+                ],
+            ],
+
+            'repeater' => [
+                'name' => 'Slides',
+                'nameFrom' => 'title',
+                'groups' => [
+                    'title' => [
+                        'type' => 'text',
+                        'label' => 'Titre à modifier', 
+                        'default' => 'default value',
+                    ],
+                    'description' => [
+                        'type' => 'editor',
+                        'label' => 'HTML content', 
+                        'default' => '<h3>EXCEPTEUR OCCAECAT</h3><br>
+                                    <p>Lorem ipsum dolor sit amet, 
+                                    consectetur adipiscing elit. Proin tristique in tortor et dignissim. 
+                                    Quisque non tempor leo. Maecenas egestas sem elit</p>',                                    
+                    ],
+                    'url' => [
+                        'type' => 'text',
+                        'label' => 'Url', 
+                        'default' => '#',
+                    ],
+                    'color' => [
+                        'type' => 'color',
+                        'label' => 'Background color of slide', 
+                        'default' => '#ffffff',
+                    ],
+                    'upload' => [
+                        'type' => 'fileupload',
+                        'label' => 'Images',
+                        'path' => '$/modules/'.$this->name.'/views/images/',
+                        'default' => [
+                            'url' => 'https://via.placeholder.com/1110x340',
+                        ],
+                    ]
+                ]
+            ]
            
 
         ];
