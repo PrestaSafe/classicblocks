@@ -169,6 +169,47 @@ class ClassicBlocks extends Module
 
         ];
 
+        // ps_banner
+
+        $blocks[] =  [
+            'name' => $this->l('Banner'),
+            'description' => $this->l('Display banners where you want'),
+            'code' => 'classic_banner',
+            'tab' => 'general',
+            'icon' => 'PhotoIcon',
+            'need_reload' => true,
+            'templates' => [
+                'default' => 'module:'.$this->name.'/views/templates/blocks/ps_banner.tpl'
+            ],
+            'config' => [
+                'fields' => [
+                    'title' => [
+                        'type' => 'text',
+                        'label' => 'Title image',
+                        'default' => 'Home banner'
+                    ],
+                    'desc' => [
+                        'type' => 'editor',
+                        'label' => 'Add a small description',
+                        'default' => 'Lorem ispum...',
+                    ],
+                    'url' => [
+                        'type' => 'text',
+                        'label' => 'URL',
+                        'default' => '#'
+                    ],
+                    'banner' => [
+                        'type' => 'fileupload',
+                        'label' => 'Images',
+                        'path' => '$/modules/'.$this->name.'/views/images/',
+                        'default' => [
+                            'url' => 'https://via.placeholder.com/1100x213',
+                        ],
+                    ]
+                ],
+            ],
+        ];
+
 
         return $blocks;
     }

@@ -22,16 +22,12 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
- <section class="featured-products clearfix">
- <h2 class="h2 products-section-title text-uppercase">
-    {$block.settings.title}
- </h2>
- {if $block.extra.products}
-    {include file="catalog/_partials/productlist.tpl" products=$block.extra.products cssClass="row" productClass="col-xs-12 col-sm-6 col-lg-4 col-xl-3"}
-    {if $block.settings.display_link && $block.settings.category}
-    <a class="all-product-link float-xs-left float-md-right h4" href="{url entity='category' id=$block.settings.category.id}">
-      {l s='All products' d='Shop.Theme.Catalog'}<i class="material-icons">&#xE315;</i>
-    </a>
-    {/if}
-  {/if}
-</section>
+
+ <a class="banner" href="{$block.settings.url}" title="{$block.settings.title}">
+ {if isset($block.settings.banner)}
+   <img src="{$block.settings.banner.url}" alt="{$block.settings.title}" title="{$block.settings.desc}" class="img-fluid" loading="lazy" width="1110" height="213">
+
+{/if}
+</a>
+
+<span>{$block.settings.desc nofilter}</span>
