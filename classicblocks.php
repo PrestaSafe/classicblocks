@@ -210,6 +210,29 @@ class ClassicBlocks extends Module
             ],
         ];
 
+        // custom text
+        $blocks[] =  [
+            'name' => $this->l('Custom text'),
+            'description' => $this->l('Display banners where you want'),
+            'code' => 'classic_custom_text',
+            'tab' => 'general',
+            'icon' => 'DocumentTextIcon',
+            'need_reload' => true,
+            'templates' => [
+                'default' => 'module:'.$this->name.'/views/templates/blocks/ps_customtext.tpl'
+            ],
+            'config' => [
+                'fields' => [
+                    'text' => [
+                        'type' => 'editor',
+                        'label' => 'Text HTML',
+                        'default' => '<p>Hello world</p>'
+                    ]
+                ],
+            ],
+        ];
+
+        
 
         return $blocks;
     }
