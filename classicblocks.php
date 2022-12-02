@@ -268,7 +268,7 @@ class ClassicBlocks extends Module
 
         $query = new ProductSearchQuery();
 
-        $nProducts = ((int)Configuration::get('CZ_CATEGORYHOME_PRODUCT_LIMIT')) ? (int)Configuration::get('CZ_CATEGORYHOME_PRODUCT_LIMIT') : 6;
+        $nProducts = ((int)Configuration::get('HOME_FEATURED_NBR')) ? (int)Configuration::get('HOME_FEATURED_NBR') : 6;
 
         $query
             ->setResultsPerPage($nProducts)
