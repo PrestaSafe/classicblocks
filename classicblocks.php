@@ -17,6 +17,7 @@ class ClassicBlocks extends Module
         $this->tab = 'administration';
         $this->version = '1.0.0';
         $this->author = 'PrestaSafe';
+        $this->dependencies = ['prettyblocks'];
 
         parent::__construct();
 
