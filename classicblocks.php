@@ -49,9 +49,9 @@ class ClassicBlocks extends Module
 
     public function hookdisplayHeader($params)
     {
-        $this->context->controller->registerStylesheet('modules-homeslider', 'modules/' . $this->name . '/css/homeslider.css', ['media' => 'all', 'priority' => 150]);
-        $this->context->controller->registerJavascript('modules-responsiveslides', 'modules/' . $this->name . '/js/responsiveslides.min.js', ['position' => 'bottom', 'priority' => 150]);
-        $this->context->controller->registerJavascript('modules-homeslider', 'modules/' . $this->name . '/js/homeslider.js', ['position' => 'bottom', 'priority' => 150]);
+        $this->context->controller->registerStylesheet('modules-homeslider', 'modules/' . $this->name . '/views/css/homeslider.css', ['media' => 'all', 'priority' => 150]);
+        $this->context->controller->registerJavascript('modules-responsiveslides', 'modules/' . $this->name . '/views/js/responsiveslides.min.js', ['position' => 'bottom', 'priority' => 150]);
+        $this->context->controller->registerJavascript('modules-homeslider', 'modules/' . $this->name . '/views/js/homeslider.js', ['position' => 'bottom', 'priority' => 150]);
     }
 
     public function hookActionRegisterThemeSettings()
