@@ -1,0 +1,10 @@
+{
+  "name": "prestasafe/classicblocks",
+  "description": "All default blocks for Classic theme",
+  "license": "proprietary",
+  "autoload": {
+    "psr-4": {
+      "ClassicBlocks\\": "src"
+    }
+  }
+}
