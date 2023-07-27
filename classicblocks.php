@@ -16,7 +16,7 @@ class ClassicBlocks extends Module
     {
         $this->name         = 'classicblocks';
         $this->tab          = 'administration';
-        $this->version      = '1.0.1';
+        $this->version      = '1.0.2';
         $this->author       = 'PrestaSafe';
         $this->dependencies = ['prettyblocks'];
 
