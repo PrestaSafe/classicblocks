@@ -39,10 +39,10 @@ class Installer
 	public function installHooks(): bool
 	{
 		return
-			// $this->module->registerHook('ActionRegisterThemeSettings') &&
+			$this->module->registerHook('ActionRegisterThemeSettings') &&
 			$this->module->registerHook('ActionRegisterBlock') &&
 			$this->module->registerHook('displayHeader') &&
-			// $this->module->registerHook('ActionQueueSassCompile') &&
+			$this->module->registerHook('ActionQueueSassCompile') &&
 			$this->module->registerHook('beforeRenderingClassicFeaturedProduct')
 		;
 	}
