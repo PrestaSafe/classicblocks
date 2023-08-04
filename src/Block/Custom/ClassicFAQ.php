@@ -21,6 +21,7 @@ final class ClassicFAQ extends AbstractBlock
 			'tab' => 'general',
 			'icon' => 'PhotoIcon',
 			'need_reload' => false,
+			'insert_default_values' => true,
 			'templates' => [
 				'default' => 'module:classicblocks/views/templates/blocks/faq.tpl'
 			],
@@ -51,6 +52,21 @@ final class ClassicFAQ extends AbstractBlock
 						'type' => 'text',
 						'label' => 'Titre à modifier',
 						'default' => 'default value',
+					],
+					'hello' => [
+						'type' => 'title',
+						'label' => 'Title Hello',
+						'force_default_value' => true,
+						'default' => [
+                            'tag' => 'h2',
+                            'value' => "FAQ",
+                            'focus' => false,
+							'inside' => true,
+                            'bold' => false,
+                            'italic' => false,
+                            'underline' => false,
+                            'size' => 18,
+                        ],
 					],
                     'content' => [
                         'type' => 'editor',
