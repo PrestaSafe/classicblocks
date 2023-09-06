@@ -38,7 +38,7 @@ final class ClassicFeaturedProduct extends AbstractBlock
 						'type' => 'selector',
 						'label' => 'Category',
 						'collection' => 'Category',
-						'default' => 'default value',
+						'default' =>  \HelperBuilder::getRandomCategory(Context::getContext()->language->id, Context::getContext()->shop->id),
 						'selector' => '{id} - {name}'
 					],
 					'title' => [
